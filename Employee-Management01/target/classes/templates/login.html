@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+	
+</head>
+<style>
+.container1{
+	background: linear-gradient(to left, #99ff66 0%, #cc99ff 99%);
+	padding:90px;
+	background-size: cover;
+	display:flex;
+	flex-direction: row;
+	justify-content:center;
+	padding-right:230px;
+	padding-left:-50px;
+}
+.logo_container{
+	text-align: center;
+     margin: 24px 0 12px 0;
+}
+.logo{
+	width:30%;
+	border-radius: 30%;
+}
+.login{
+	 background: linear-gradient(to left, #000000 0%, #00ffff 99%);
+	width:370px;
+	border-radius:50px;
+
+}
+.form-group{
+	padding:10px;
+	border-radius: 15px;
+}
+.btn{
+	border-radius:10px;
+	background-color: blue;
+	color:white;
+	font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+	font-size:large;
+	border-color:black;
+	
+}
+.form-group1{
+	text-align:center;
+	color:antiquewhite;
+}
+.h1{
+	text-align:center;
+	color:beige;
+}
+</style>
+<body>
+
+	<!-- create navigation bar ( header) -->
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" th:href="@{/}">Employee Management System</a>
+			</div>
+		</div>
+	</nav>
+	
+	<br>
+	<br>
+	<div class = "container1">
+		<div class = "row">
+			<div class = "col-md-6 col-md-offset-3">
+				
+				<div class="login">
+                    <div class="logo_container">
+                        <img src="https://www.singaporeg.sg/images/Login.png" class="logo" />
+                    </div>
+       
+				<h1 class="h1"> Sign-In </h1>
+				<form th:action="@{/login}" method="post">
+					
+					<!-- error message -->
+					<div th:if="${param.error}">
+						<div class="alert alert-danger">Invalid username or
+							password.</div>
+					</div>
+				
+					<!-- logout message -->
+					<div th:if="${param.logout}">
+						<div class="alert alert-info">You have been logged out.</div>
+					</div>
+					
+					<div class = "form-group">
+						<label for ="username"> Username </label> :
+						<input type="text" class = "form-control" id ="username" name = "username"
+						placeholder="Enter Email ID" autofocus="autofocus">
+					</div>
+					
+					<div class="form-group">
+						<label for="password">Password</label>: <input type="password"
+							id="password" name="password" class="form-control"
+							placeholder="Enter Password" />
+					</div>
+					
+					<div class="form-group">
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-3">
+								<input type="submit" name="login-submit" id="login-submit"
+									class="form-control btn btn-primary" value="Log In" />
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="form-group1">
+						<span>New user? <a href="/" th:href="@{/registration}">Register
+								here</a></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
